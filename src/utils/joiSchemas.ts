@@ -23,3 +23,13 @@ export const readerAccountSchema = Joi.object({
     email: Joi.string().email().required(),
     birthdate: Joi.string().length(10).required()
 })
+
+export const passwordUpdateSchema = Joi.object({
+    password: Joi.string().min(8).required(), // Adjust based on your password requirements
+});
+
+export const profileUpdateSchema = Joi.object({
+    userName: Joi.string().max(50).min(5).required(),
+    email: Joi.string().email().required(),
+    birthdate: Joi.string().length(10).required()
+})

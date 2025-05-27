@@ -23,11 +23,20 @@ export class AccountController {
 
     async removeReaderAccount(username: string) {
         const reader = await this.service.removeAccount(username)
-        return reader
+        return Promise.resolve(reader)
     }
 
     async updateReaderAccount(dto: ReaderDto) {
         const reader:Reader = convertReaderDtoToReader(dto);
-        await this.service.addAccount(reader);
+        await this.service.updateAccount(reader);
+        return convertReaderToReaderDto(reader)
+    }
+    async updateReaderPassword(userName: string, password: string) {
+        const reader = await this.service.updateReaderPassword(userName, password);
+        return convertReaderToReaderDto(reader)
+    }
+    async updateReaderProfile(userName: string, profileData:ReaderDto) {
+        const reader = await this.service.updateReaderProfile(userName, profileData);
+        return convertReaderToReaderDto(reader)
     }
 }

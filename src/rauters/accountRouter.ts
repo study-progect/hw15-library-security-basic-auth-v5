@@ -1,6 +1,6 @@
 import express, {Request, Response} from "express";
 import asyncHandler from "express-async-handler";
-import {readerAccountSchema} from "../utils/joiSchemas.js";
+import {passwordUpdateSchema, profileUpdateSchema, readerAccountSchema,} from "../utils/joiSchemas.js";
 import {AccountController} from "../controllers/AccountController.js";
 import {ReaderDto} from "../model/ReaderDto.js";
 import {AuthRequest, Role} from "../utils/libTypes.js";
@@ -40,3 +40,30 @@ accountRouter.put('/', asyncHandler(async (req, res) => {
     await controller.updateReaderAccount(body as ReaderDto);
     res.send();
 }))
+accountRouter.put('/password',
+    asyncHandler(async (req: AuthRequest, res: Response) => {
+        const body = req.body;
+        const { error } = passwordUpdateSchema.validate(body);
+        if (error) throw new Error(JSON.stringify({ status: 400, message: error.message }));
+        if (!req.username) {
+            throw new Error(JSON.stringify({ status: 401, message: 'Authentication required' }));
+        }
+        console.log('Password update:', body);
+        await controller.updateReaderPassword(req.username, body.password);
+        res.send();
+    })
+);
+
+accountRouter.put('/profile',
+    asyncHandler(async (req: AuthRequest, res: Response) => {
+        const body = req.body;
+        const { error } = profileUpdateSchema.validate(body);
+        if (error) throw new Error(JSON.stringify({ status: 400, message: error.message }));
+        if (!req.username) {
+            throw new Error(JSON.stringify({ status: 401, message: 'Authentication required' }));
+        }
+        console.log('Profile update:', body);
+        await controller.updateReaderProfile(req.username, body as ReaderDto);
+        res.send();
+    })
+);
