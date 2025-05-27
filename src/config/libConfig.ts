@@ -22,5 +22,6 @@ export const skipPaths = [
 ]
 
 export const pathsRoles:Record<string, Role[]> = {
-    '/accountsPUT' : [Role.USER, Role.ADMIN]
+    '/accountsPUT' : [Role.USER, Role.ADMIN],
+    '/accountsPOST':[Role.USER],
 }

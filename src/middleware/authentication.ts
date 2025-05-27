@@ -22,11 +22,15 @@ async function basicAuth(header: string, req: AuthRequest, service: AccountServi
 }
 
 export const authenticate = (service:AccountService) =>
-async (req: Request, res: Response, next: NextFunction) => {
+async (req: AuthRequest, res: Response, next: NextFunction) => {
     const header = req.header('Authorization');
+    const pathMethod = req.path + req.method;
     console.log(header);
     if (header) {
         await basicAuth(header, req, service)
+    }
+    if (!req.role && pathMethod === '/accountsPOST') {
+        req.role = Role.USER;
     }
     next();
 }
