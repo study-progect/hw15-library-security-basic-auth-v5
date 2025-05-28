@@ -16,7 +16,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userName\":\"Trinity8\",\n    \"password\":\"123456789\",\n    \"email\":\"trinity2@gmail.com\",\n    \"birthdate\":\"1990/01/11\"\n}",
+					"raw": "{\n    \"userName\":\"Trinity22\",\n    \"password\":\"123456789\",\n    \"email\":\"trinity18@gmail.com\",\n    \"birthdate\":\"1990/01/18\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -33,22 +33,29 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"username": "Trinity3",
+						"username": "Trinity22",
 						"password": "123456789"
 					}
 				},
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:3555/accounts/account/Trinity3"
+				"url": "http://localhost:3555/accounts/account/Trinity22"
 			},
 			"response": []
 		},
 		{
 			"name": "deleteUser",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "123456789011",
+						"username": "Trinity22"
+					}
+				},
 				"method": "DELETE",
 				"header": [],
-				"url": "http://localhost:3555/accounts"
+				"url": "http://localhost:3555/accounts/account/Trinity3"
 			},
 			"response": []
 		},
@@ -114,8 +121,8 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"password": "12345678901",
-						"username": "Trinity8"
+						"username": "Trinity22",
+						"password": "123456789011"
 					}
 				},
 				"method": "PUT",
@@ -128,7 +135,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userName\":\"Trinity8\",\n    \"email\":\"trinity9@gmail.com\",\n    \"birthdate\":\"1990/01/11\"\n}",
+					"raw": "{\n    \"userName\":\"Trinity22\",\n    \"email\":\"trinity11@gmail.com\",\n    \"birthdate\":\"1990/01/11\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

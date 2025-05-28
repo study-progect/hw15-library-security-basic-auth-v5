@@ -8,9 +8,10 @@ import {NextFunction, Response} from "express";
 //     if(!role || !arr[pathMethod].includes(role))
 //         throw new Error(JSON.stringify({status: 403, message:""}))
 //     else next();
-//     }
+//      }
+
 export const authorize = (arr: Record<string, Role[]>) =>
-    (req: AuthRequest, res: Response, next: NextFunction) => {
+    (req: AuthRequest, res: Response, next: NextFunction):e.Response<any, Record<string, any>> => {
         // Normalize dynamic routes
         let path = req.path;
         // Map /accounts/account/:id to /accounts/account

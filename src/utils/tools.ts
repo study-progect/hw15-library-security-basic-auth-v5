@@ -4,6 +4,7 @@ import {v4 as uuidv4} from 'uuid';
 import {ReaderDto} from "../model/ReaderDto.js";
 import bcrypt from "bcryptjs";
 import {Reader} from "../model/Reader.js";
+import {Role} from "./libTypes.js";
 
 export function getGenre(genre: string) {
     const bookGenre =
@@ -46,6 +47,7 @@ export function convertReaderDtoToReader(dto: ReaderDto):Reader {
         birthdate: dto.birthdate,
         email: dto.email,
         passHash: hash,
+        role: Role.USER,
     }
 }
 
@@ -55,6 +57,6 @@ export const convertReaderToReaderDto = (reader:Reader):ReaderDto => {
          email: reader.email,
         password: reader.passHash,
         birthdate: reader.birthdate,
-
+        role: reader.role
     }
 }
